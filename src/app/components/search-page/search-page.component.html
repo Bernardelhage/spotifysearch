@@ -1,0 +1,63 @@
+    <body id="page-top" style="background-color:black ;">
+        <section style="background-color:black ;">
+            <div class="container">
+                <div class="px-4 px-lg-5 h-100">
+                        <div class="row align-items-center justify-content-center text-center">
+                            <div class="button-container-div">
+                                <div class="input-group">
+                                    <input type="search" [(ngModel)]="searchQ" class="form-control rounded" (keyup.enter)="searchArtists()" placeholder="Search for an artist..." aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="submit" class="btn" style="background-color:#1ed760; " (click)="searchArtists()" ><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row" style="background-color:black ;">
+                        <div class="card col-lg-4 col-md-12 col-sm-12 col-xs-12" style="width: 18rem;  margin:3px; background-color:black;" *ngFor="let artist of artists"> 
+                                <a routerLink="/artists/{{artist.id}}"><img class="card-img-top" *ngIf="artist.followers.total!==0 && artist.images[0] " [src]="artist.images[0].url" alt="Loading the image..." style="height:300px ;"></a>
+                                <a routerLink="/artists/{{artist.id}}"><img class="card-img-top" src="/src/assets/img/def.jpg" *ngIf="!artist.images[0]"  alt="Loading the image..." style="height:300px ;"></a>
+                                <div class="card-body">
+                                            <a class="card-title text-white" routerLink="/artists/{{artist.id}}"  style="text-decoration: none;" >{{artist.name}}</a>
+                                            <p class="card-text text-white">{{artist.followers.total}} followers</p>
+                                        <div *ngIf="artist.followers.total>10000000">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <div *ngIf="artist.followers.total>1000000 && artist.followers.total<10000000">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                        </div>
+                                        <div *ngIf="artist.followers.total>100000 && artist.followers.total<1000000">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                        </div>
+                                        <div *ngIf="artist.followers.total>10000 && artist.followers.total<100000">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                        </div>
+                                        <div *ngIf="artist.followers.total<10000 && artist.followers.total<100000 ">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                        </div>
+                                </div>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <script src="/src/assets/js/scripts.js"></script>
+</body>
+
