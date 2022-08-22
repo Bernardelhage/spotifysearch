@@ -1,6 +1,6 @@
 # Spotifysearch
 
-This project was created by Bernard El Hage
+This project was created (using Angular) by Bernard El Hage
 
 ## Instructions
   
